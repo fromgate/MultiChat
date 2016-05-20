@@ -15,7 +15,13 @@ public class Cfg extends SimpleConfig {
     public boolean debugMode = false;
 
     @Path("chat.format")
-    public String chatFormat = "&a%prefix% &6{%0}&e: {%1}";
+    public String chatFormat = "&a%prefix%&6%player%&e: %message%";
+
+    @Path("name-tag.enable")
+    public boolean nametagEnabled = true;
+
+    @Path("name-tag.format")
+    public String nametagFormat = "&a%prefix%&6%player%";
 
     public Cfg() {
         super(MultiChat.getPlugin());

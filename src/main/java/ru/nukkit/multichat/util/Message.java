@@ -32,12 +32,15 @@ public enum Message {
     CHAT_CMD ("MulitChat command. For more info type: /chat help"),
     CHAT_RELOAD("/chat reload - reload chat configuration"),
     CHAT_RELOADED("MultiChat configuration reloaded"),
-    CHAT_SET("/chat set <message format> - configure chat format"),
-    CHAT_FAILFORMAT("Wrong chat format. It must contain placeholders: {%0} - nick, {%1} - messsage"),
+    CHAT_SET("/chat set <chat|tag> <message format> - configure chat or name tag format"),
+    CHAT_FAILFORMAT("Wrong chat format. It must contain placeholders: %player% - player name, %message% - messsage"),
+    CHAT_FAILTAGFORMAT("Wrong name tag format. It must contain placeholder %player% - player name"),
+    CHAT_SETTAG_OK("Name tag format is set to: \"%1%\""),
 
-    CHAT_SET_OK("Chat formater is set to: \"%1%\". Message Example:"),
+    CHAT_SET_OK("Chat format is set to: \"%1%\". Message Example:"),
     CHAT_HELP("/chat help - show MultiChat help"),
-    CHAT_HELP_CURRENT("Current chat format: %1%");
+    CHAT_HELP_CURRENT("Current chat format: %1%"),
+    CHAT_HELP_NAMETAG_CURRENT("Use nametags: %1% Name tag format: %2%");
 
 
 

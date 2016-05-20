@@ -19,8 +19,9 @@ public class ChatHelp extends Cmd {
         Message.CHAT_HELP.print(sender);
         Message.CHAT_RELOAD.print(sender);
         Message.CHAT_SET.print(sender);
+        Message.CHAT_HELP_NAMETAG_CURRENT.print(sender,MultiChat.getCfg().nametagEnabled, MultiChat.getCfg().nametagFormat);
         Message.CHAT_HELP_CURRENT.print(sender, MultiChat.getCfg().chatFormat);
-        sender.sendMessage(TextFormat.colorize(format).replace("{%0}","Leeloo").replace("{%1}","Big bada boom!"));
+        sender.sendMessage(TextFormat.colorize(format).replace("%player%","{%0}").replace("%message%","{%1}").replace("{%0}","Leeloo").replace("{%1}","Big bada boom!"));
         return true;
     }
 }
