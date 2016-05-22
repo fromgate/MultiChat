@@ -20,6 +20,7 @@ public class Commander {
         addNewCommand(new ChatHelp(),Message.CHAT_CMD);
         addNewCommand(new ChatReload());
         addNewCommand(new ChatSet());
+        addNewCommand(new ChatGroup());
 	}
 
 

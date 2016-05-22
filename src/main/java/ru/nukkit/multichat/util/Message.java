@@ -36,11 +36,16 @@ public enum Message {
     CHAT_FAILFORMAT("Wrong chat format. It must contain placeholders: %player% - player name, %message% - messsage"),
     CHAT_FAILTAGFORMAT("Wrong name tag format. It must contain placeholder %player% - player name"),
     CHAT_SETTAG_OK("Name tag format is set to: \"%1%\""),
-
     CHAT_SET_OK("Chat format is set to: \"%1%\". Message Example:"),
+
+    CHAT_GROUP_TAG_OK("Name tag format of group %1% is set to: \"%2%\""),
+    CHAT_GROUP_CHAT_OK("Chat format of group %1% is set to: \"%2%\". Message Example:"),
+
+
     CHAT_HELP("/chat help - show MultiChat help"),
     CHAT_HELP_CURRENT("Current chat format: %1%"),
-    CHAT_HELP_NAMETAG_CURRENT("Use nametags: %1% Name tag format: %2%");
+    CHAT_HELP_NAMETAG_CURRENT("Use nametags: %1% Name tag format: %2%"),
+    CHAT_GROUP_NOTEXIST("Group %1% not found. Custom group format was configured but you must confgiure Multipass group with same id     to take effect",'6');
 
 
 
