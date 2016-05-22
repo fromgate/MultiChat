@@ -20,12 +20,12 @@ public class ChatGroup extends Cmd {
             if (!(format.contains("{%0}")||format.contains("%player%"))&&!(format.contains("{%1}")||format.contains("%message%"))) return Message.CHAT_FAILFORMAT.print(sender);
             MultiChat.getCfg().customGroups.set(group+".chat", format);
 
-            Message.CHAT_GROUP_CHAT_OK.print(sender, format);
+            Message.CHAT_GROUP_CHAT_OK.print(sender, group, format);
             sender.sendMessage(TextFormat.colorize(format).replace("%player%","{%0}").replace("%message%","{%1}").replace("{%0}","Leeloo").replace("{%1}","Big bada boom!"));
         } else {
             if (!format.contains("{%0}")&&!format.contains("%player%")) return Message.CHAT_FAILTAGFORMAT.print(sender);
             MultiChat.getCfg().customGroups.set(group+".name-tag", format);
-            Message.CHAT_GROUP_TAG_OK.print(sender, format);
+            Message.CHAT_GROUP_TAG_OK.print(sender, group, format);
         }
         MultiChat.getCfg().save();
         if (!Multipass.isGroupExist(group)) Message.CHAT_GROUP_NOTEXIST.print(sender,group);

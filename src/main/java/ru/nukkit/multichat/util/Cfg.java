@@ -29,7 +29,7 @@ public class Cfg {
         chatFormat = cfg.getString ("chat.format", "&a%prefix%&6%player%&e: %message%");
         nametagEnabled = cfg.getBoolean ("name-tag.enable", true);
         nametagFormat = cfg.getString ("name-tag.format", "&a%prefix%&6%player%");
-        customGroups = cfg.getSection("groups-format");
+        customGroups = cfg.getSection("group-format");
     }
 
     public void save(){
@@ -40,7 +40,7 @@ public class Cfg {
         cfg.set("chat.format", chatFormat);
         cfg.set("name-tag.enable", nametagEnabled);
         cfg.set ("name-tag.format", nametagFormat);
-        cfg.set("groups-format",customGroups);
+        cfg.set("group-format",customGroups);
         MultiChat.getPlugin().saveConfig();
     }
 
