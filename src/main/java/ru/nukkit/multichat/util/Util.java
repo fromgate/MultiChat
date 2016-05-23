@@ -17,28 +17,28 @@ public class Util {
 
     public static String getCustomFormat (Player player){
         ConfigSection section = MultiChat.getCfg().customGroups;
+        String chatFormat = MultiChat.getCfg().chatFormat;
         for (String key : section.getKeys(false)){
             if (!Multipass.isInGroup(player, key)) continue;
-            String value = section.getString(key+".chat", "");
-            if (!value.isEmpty()) return value;
+            chatFormat = section.getString(key+".chat", chatFormat);
         }
-        return MultiChat.getCfg().chatFormat;
+        return chatFormat;
     }
 
     public static String getCustomNameTag (Player player){
         ConfigSection section = MultiChat.getCfg().customGroups;
+        String nameTag = MultiChat.getCfg().nametagFormat;
         for (String key : section.getKeys(false)){
             if (!Multipass.isInGroup(player, key)) continue;
-            String value = section.getString(key+".name-tag", "");
-            if (!value.isEmpty()) return value;
+            nameTag = section.getString(key+".name-tag", nameTag);
         }
-        return MultiChat.getCfg().nametagFormat;
+        return nameTag;
     }
 
 
 
     public static String getNametag(Player player){
-        return replacePlaceholders(player, MultiChat.getCfg().nametagFormat)
+        return replacePlaceholders(player, getCustomNameTag(player))
                 .replace("{%0}",player.getName()).replace("{%1}","");
     }
 
@@ -59,5 +59,13 @@ public class Util {
             sb.append(args[i]);
         }
         return sb.toString();
+    }
+
+    public static void setNameTag (Player player, String nameTag){
+        if (nameTag==null||nameTag.isEmpty()) player.setNameTagVisible(false);
+        else {
+            player.setNameTag(TextFormat.colorize(nameTag));
+            player.isNameTagVisible();
+        }
     }
 }

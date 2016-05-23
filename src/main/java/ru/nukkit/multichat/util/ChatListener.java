@@ -27,8 +27,10 @@ public class ChatListener implements Listener{
 
     @EventHandler (priority = EventPriority.NORMAL)
     public void onJoin (PlayerJoinEvent event){
-        if (MultiChat.getCfg().nametagEnabled)
-            event.getPlayer().setNameTag(Util.getNametag(event.getPlayer()));
+        if (MultiChat.getCfg().nametagEnabled) {
+            Util.setNameTag(event.getPlayer(),Util.getNametag(event.getPlayer()));
+            Message.debugMessage("setNameTag",Util.getNametag(event.getPlayer()));
+        }
     }
 
     @EventHandler (priority = EventPriority.NORMAL)
@@ -41,10 +43,7 @@ public class ChatListener implements Listener{
             Player player = Server.getInstance().getPlayerExact(event.getUser());
             if (player!=null) players.add(player);
         }
-        players.forEach(player -> player.setNameTag(Util.getNametag(player)));
+        Message.debugMessage("setNameTag", event.isMassUpdate() ? "all" : event.getUser());
+        players.forEach(player -> Util.setNameTag(player,Util.getNametag(player)));
     }
-
-
-
-
 }
