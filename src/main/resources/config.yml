@@ -1,0 +1,18 @@
+general:
+  language: default
+  language-save: false
+  debug: false
+chat:
+  format: '&2%prefix%a2%player%&e: %message%'
+name-tag:
+  enable: true
+  format: '&a%prefix%&6%player%'
+display-name:
+  enable: true
+  strip-colors: false
+group-format:
+  default:
+    chat: '&5[GUEST]&player%e: 6%message%'
+  vip:
+    chat: '&6[VIP]&4%player%&a: %message%'
+    name-tag: '&6[VIP] &4%player%'

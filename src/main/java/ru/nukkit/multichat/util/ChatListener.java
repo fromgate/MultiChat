@@ -24,18 +24,19 @@ public class ChatListener implements Listener{
         event.setFormat(Util.getChatFormat(event.getPlayer()));
     }
 
-
     @EventHandler (priority = EventPriority.NORMAL)
     public void onJoin (PlayerJoinEvent event){
         if (MultiChat.getCfg().nametagEnabled) {
             Util.setNameTag(event.getPlayer(),Util.getNametag(event.getPlayer()));
             Message.debugMessage("setNameTag",Util.getNametag(event.getPlayer()));
         }
+        if (MultiChat.getCfg().displayNameEnable)
+            Util.setDisplayName(event.getPlayer(),Util.getNametag(event.getPlayer()));
     }
 
     @EventHandler (priority = EventPriority.NORMAL)
     public void onPermission (PermissionsUpdateEvent event){
-        if (!MultiChat.getCfg().nametagEnabled) return;
+        if (!MultiChat.getCfg().nametagEnabled&&!MultiChat.getCfg().displayNameEnable) return;
         List<Player> players = new ArrayList<>();
         if (event.isMassUpdate()) {
             players.addAll(Server.getInstance().getOnlinePlayers().values());
@@ -44,6 +45,11 @@ public class ChatListener implements Listener{
             if (player!=null) players.add(player);
         }
         Message.debugMessage("setNameTag", event.isMassUpdate() ? "all" : event.getUser());
-        players.forEach(player -> Util.setNameTag(player,Util.getNametag(player)));
+        players.forEach(player -> {
+            if (MultiChat.getCfg().displayNameEnable)
+                Util.setNameTag(player,Util.getNametag(player));
+            if (MultiChat.getCfg().displayNameEnable)
+                Util.setDisplayName(player,Util.getNametag(player));
+        });
     }
 }

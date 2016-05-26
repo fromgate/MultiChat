@@ -24,9 +24,9 @@ public class MultiChat extends PluginBase{
         instance = this;
         cfg = new Cfg();
         cfg.load();
+        cfg.save();
         Message.init(this);
         Commander.init(this);
-        cfg.save();
         getServer().getPluginManager().registerEvents(new ChatListener(),this);
     }
 }

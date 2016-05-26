@@ -64,8 +64,14 @@ public class Util {
     public static void setNameTag (Player player, String nameTag){
         if (nameTag==null||nameTag.isEmpty()) player.setNameTagVisible(false);
         else {
-            player.setNameTag(TextFormat.colorize(nameTag));
+            //player.setNameTag(TextFormat.colorize(nameTag));
             player.isNameTagVisible();
+            player.setDisplayName(TextFormat.colorize(nameTag));
         }
+    }
+
+    public static void setDisplayName (Player player, String nameTag){
+        player.setDisplayName(MultiChat.getCfg().isDisplayNameNoColors ? TextFormat.clean(nameTag) : nameTag);
+
     }
 }
