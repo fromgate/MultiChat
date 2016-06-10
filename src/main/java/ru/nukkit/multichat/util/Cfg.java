@@ -30,7 +30,10 @@ public class Cfg extends SimpleConfig {
     @Path("display-name.strip-colors")
     public boolean isDisplayNameNoColors = false;
 
-    @Path("group-format")
+    @Path ("group.scan-subgroups")
+    public boolean useSubGroup = true;
+
+    @Path("group.format")
     public ConfigSection customGroups = new ConfigSection();
 
     public Cfg() {

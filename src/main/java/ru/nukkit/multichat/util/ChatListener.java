@@ -24,14 +24,15 @@ public class ChatListener implements Listener{
         event.setFormat(Util.getChatFormat(event.getPlayer()));
     }
 
-    @EventHandler (priority = EventPriority.NORMAL)
+    @EventHandler (priority = EventPriority.LOW)
     public void onJoin (PlayerJoinEvent event){
+        Player player = event.getPlayer();
         if (MultiChat.getCfg().nametagEnabled) {
             Util.setNameTag(event.getPlayer(),Util.getNametag(event.getPlayer()));
             Message.debugMessage("setNameTag",Util.getNametag(event.getPlayer()));
         }
-        if (MultiChat.getCfg().displayNameEnable)
-            Util.setDisplayName(event.getPlayer(),Util.getNametag(event.getPlayer()));
+        if (MultiChat.getCfg().displayNameEnable) Util.setDisplayName(event.getPlayer(),Util.getNametag(player));
+        else player.setDisplayName(player.getName());
     }
 
     @EventHandler (priority = EventPriority.NORMAL)

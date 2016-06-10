@@ -10,9 +10,11 @@ name-tag:
 display-name:
   enable: true
   strip-colors: false
-group-format:
-  default:
-    chat: '&5[GUEST]&player%e: 6%message%'
-  vip:
-    chat: '&6[VIP]&4%player%&a: %message%'
-    name-tag: '&6[VIP] &4%player%'
+group:
+  scan-subgroups: true
+  format:
+    default:
+      chat: '&5[GUEST]&3%player%e: 6%message%'
+    vip:
+      chat: '&6[VIP]&4%player%&a: %message%'
+      name-tag: '&6[VIP] &4%player%'

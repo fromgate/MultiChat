@@ -6,9 +6,6 @@ import cn.nukkit.utils.TextFormat;
 import ru.nukkit.multichat.MultiChat;
 import ru.nukkit.multipass.Multipass;
 
-/**
- * Created by Igor on 20.05.2016.
- */
 public class Util {
 
     public static String getChatFormat(Player player){
@@ -19,9 +16,10 @@ public class Util {
         ConfigSection section = MultiChat.getCfg().customGroups;
         String chatFormat = MultiChat.getCfg().chatFormat;
         for (String key : section.getKeys(false)){
-            if (!Multipass.isInGroup(player, key)) continue;
+            if (!isPlayerInGroup(player, key)) continue;
             chatFormat = section.getString(key+".chat", chatFormat);
         }
+        Message.debugMessage("getCustomFormat("+player.getName()+"):",chatFormat);
         return chatFormat;
     }
 
@@ -29,13 +27,18 @@ public class Util {
         ConfigSection section = MultiChat.getCfg().customGroups;
         String nameTag = MultiChat.getCfg().nametagFormat;
         for (String key : section.getKeys(false)){
-            if (!Multipass.isInGroup(player, key)) continue;
+            if (!isPlayerInGroup(player, key)) continue;
             nameTag = section.getString(key+".name-tag", nameTag);
         }
         return nameTag;
     }
 
-
+    private static boolean isPlayerInGroup (Player player, String group){
+        if (!MultiChat.getCfg().useSubGroup) return Multipass.isInGroup(player, group);
+        for (String g : Multipass.getGroups(player))
+            if (group.equalsIgnoreCase(g)) return true;
+        return false;
+    }
 
     public static String getNametag(Player player){
         return replacePlaceholders(player, getCustomNameTag(player))
@@ -46,7 +49,8 @@ public class Util {
         String format = new String(str);
         format = format.replace("%prefix%", Multipass.getPrefix(player));
         format = format.replace("%suffix%",Multipass.getSuffix(player));
-        format = format.replace("%player%","{%0}").replace("%message%","{%1}");
+        format = format.replace("%player%",player.getName()).replace("%message%","{%1}");
+        format = format.replace("%display%",player.getDisplayName()).replace("%message%","{%1}");
         format = format.replace("%world%",player.getLevel().getName());
         return TextFormat.colorize(format).trim();
     }
@@ -64,7 +68,6 @@ public class Util {
     public static void setNameTag (Player player, String nameTag){
         if (nameTag==null||nameTag.isEmpty()) player.setNameTagVisible(false);
         else {
-            //player.setNameTag(TextFormat.colorize(nameTag));
             player.isNameTagVisible();
             player.setDisplayName(TextFormat.colorize(nameTag));
         }
@@ -72,6 +75,5 @@ public class Util {
 
     public static void setDisplayName (Player player, String nameTag){
         player.setDisplayName(MultiChat.getCfg().isDisplayNameNoColors ? TextFormat.clean(nameTag) : nameTag);
-
     }
 }
