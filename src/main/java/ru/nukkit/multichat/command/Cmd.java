@@ -56,8 +56,8 @@ public abstract class Cmd {
         return this.command;
     }
 
-    public String [] getSubCommands(){
-        return this.subCommands==null ? new String[]{} : this.subCommands;
+    public String[] getSubCommands() {
+        return this.subCommands == null ? new String[]{} : this.subCommands;
     }
 
     public String[] getAliases() {

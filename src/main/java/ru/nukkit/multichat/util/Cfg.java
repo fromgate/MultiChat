@@ -7,7 +7,7 @@ import ru.nukkit.multichat.MultiChat;
 public class Cfg extends SimpleConfig {
 
     @Path("general.language")
-    public String language="default";
+    public String language = "default";
 
     @Path("general.language-save")
     public boolean saveLanguage = false;
@@ -30,7 +30,7 @@ public class Cfg extends SimpleConfig {
     @Path("display-name.strip-colors")
     public boolean isDisplayNameNoColors = false;
 
-    @Path ("group.scan-subgroups")
+    @Path("group.scan-subgroups")
     public boolean useSubGroup = true;
 
     @Path("group.format")
@@ -41,7 +41,7 @@ public class Cfg extends SimpleConfig {
     }
 
     @Override
-    public boolean load(){
+    public boolean load() {
         MultiChat.getPlugin().getDataFolder().mkdirs();
         MultiChat.getPlugin().saveDefaultConfig();
         return super.load();

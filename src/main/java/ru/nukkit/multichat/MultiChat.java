@@ -6,27 +6,28 @@ import ru.nukkit.multichat.util.Cfg;
 import ru.nukkit.multichat.util.ChatListener;
 import ru.nukkit.multichat.util.Message;
 
-public class MultiChat extends PluginBase{
+public class MultiChat extends PluginBase {
 
     private static MultiChat instance;
     private Cfg cfg;
 
-    public static MultiChat getPlugin(){
+    public static MultiChat getPlugin() {
         return instance;
     }
-    public static Cfg getCfg(){
+
+    public static Cfg getCfg() {
         return instance.cfg;
     }
 
 
     @Override
-    public void onEnable(){
+    public void onEnable() {
         instance = this;
         cfg = new Cfg();
         saveDefaultConfig();
         cfg.load();
         Message.init(this);
         Commander.init(this);
-        getServer().getPluginManager().registerEvents(new ChatListener(),this);
+        getServer().getPluginManager().registerEvents(new ChatListener(), this);
     }
 }

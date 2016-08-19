@@ -16,20 +16,20 @@ import java.text.DecimalFormat;
 
 public enum Message {
 
-	//Default (lang) messages
-	LNG_LOAD_FAIL ("Failed to load languages from file. Default message used"),
-	LNG_SAVE_FAIL ("Failed to save lang file"),
-	LNG_PRINT_FAIL ("Failed to print message %1%. Sender object is null."),
-	LNG_CONFIG ("[MESSAGES] Messages: %1% Language: %2% Save translate file: %1% Debug mode: %3%"),
-	WORD_UNKNOWN ("Unknown"),
-	WRONG_PERMISSION("You have not enough permissions to execute this command"),
-	PERMISSION_FAIL ("You have not enough permissions to execute this command",'c'),
-	PLAYER_COMMAD_ONLY ("You can use this command in-game only!",'c'),
+    //Default (lang) messages
+    LNG_LOAD_FAIL("Failed to load languages from file. Default message used"),
+    LNG_SAVE_FAIL("Failed to save lang file"),
+    LNG_PRINT_FAIL("Failed to print message %1%. Sender object is null."),
+    LNG_CONFIG("[MESSAGES] Messages: %1% Language: %2% Save translate file: %1% Debug mode: %3%"),
+    WORD_UNKNOWN("Unknown"),
+    WRONG_PERMISSION("You have not enough permissions to execute this command"),
+    PERMISSION_FAIL("You have not enough permissions to execute this command", 'c'),
+    PLAYER_COMMAD_ONLY("You can use this command in-game only!", 'c'),
     CMD_REGISTERED("Command registered: %1%"),
-    CMD_FAILED ("Failed to execute command. Type %1% to get help!"),
+    CMD_FAILED("Failed to execute command. Type %1% to get help!"),
     HLP_TITLE("%1% | Help"),
 
-    CHAT_CMD ("MulitChat command. For more info type: /chat help"),
+    CHAT_CMD("MulitChat command. For more info type: /chat help"),
     CHAT_RELOAD("/chat reload - reload chat configuration"),
     CHAT_RELOADED("MultiChat configuration reloaded"),
     CHAT_SET("/chat set <chat|tag> <message format> - configure chat or name tag format"),
@@ -45,8 +45,7 @@ public enum Message {
     CHAT_HELP("/chat help - show MultiChat help"),
     CHAT_HELP_CURRENT("Current chat format: %1%"),
     CHAT_HELP_NAMETAG_CURRENT("Use nametags: %1% Name tag format: %2%"),
-    CHAT_GROUP_NOTEXIST("Group %1% not found. Custom group format was configured but you must confgiure Multipass group with same id     to take effect",'6');
-
+    CHAT_GROUP_NOTEXIST("Group %1% not found. Custom group format was configured but you must confgiure Multipass group with same id     to take effect", '6');
 
 
     private static boolean debugMode = false;

@@ -10,7 +10,7 @@ import ru.nukkit.multichat.util.Message;
  */
 
 
-@CmdDefine(command = "chat", alias="multichat", subCommands = "reload", permission = "multichat.config", description = Message.CHAT_RELOAD, allowConsole = true)
+@CmdDefine(command = "chat", alias = "multichat", subCommands = "reload", permission = "multichat.config", description = Message.CHAT_RELOAD, allowConsole = true)
 public class ChatReload extends Cmd {
     public boolean execute(CommandSender sender, Player player, String[] args) {
         MultiChat.getCfg().load();

@@ -12,16 +12,16 @@ import static cn.nukkit.permission.BanEntry.format;
  * Created by Igor on 19.05.2016.
  */
 
-@CmdDefine(command = "chat",  alias = "multichat", subCommands = "help", permission = "multichat.config", description = Message.CHAT_HELP )
+@CmdDefine(command = "chat", alias = "multichat", subCommands = "help", permission = "multichat.config", description = Message.CHAT_HELP)
 public class ChatHelp extends Cmd {
     @Override
     public boolean execute(CommandSender sender, Player player, String[] args) {
         Message.CHAT_HELP.print(sender);
         Message.CHAT_RELOAD.print(sender);
         Message.CHAT_SET.print(sender);
-        Message.CHAT_HELP_NAMETAG_CURRENT.print(sender,MultiChat.getCfg().nametagEnabled, MultiChat.getCfg().nametagFormat);
+        Message.CHAT_HELP_NAMETAG_CURRENT.print(sender, MultiChat.getCfg().nametagEnabled, MultiChat.getCfg().nametagFormat);
         Message.CHAT_HELP_CURRENT.print(sender, MultiChat.getCfg().chatFormat);
-        sender.sendMessage(TextFormat.colorize(format).replace("%player%","{%0}").replace("%message%","{%1}").replace("{%0}","Leeloo").replace("{%1}","Big bada boom!"));
+        sender.sendMessage(TextFormat.colorize(format).replace("%player%", "{%0}").replace("%message%", "{%1}").replace("{%0}", "Leeloo").replace("{%1}", "Big bada boom!"));
         return true;
     }
 }
