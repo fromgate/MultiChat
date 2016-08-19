@@ -14,7 +14,7 @@ group:
   scan-subgroups: true
   format:
     default:
-      chat: '&5[GUEST]&3%player%e: 6%message%'
+      chat: '&5[GUEST]&3%player%&a: 6%message%'
     vip:
       chat: '&6[VIP]&4%player%&a: %message%'
       name-tag: '&6[VIP] &4%player%'
