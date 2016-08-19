@@ -23,12 +23,12 @@ public class ChatSet extends Cmd {
 
             Message.CHAT_SET_OK.print(sender, format);
             sender.sendMessage(TextFormat.colorize(format).replace("%player%", "{%0}").replace("%message%", "{%1}").replace("{%0}", "Leeloo").replace("{%1}", "Big bada boom!"));
-        } else {
+        } else if (args[1].matches("(?i)name|tag|nametag")){
             if (!format.contains("{%0}") && !format.contains("%player%"))
                 return Message.CHAT_FAILTAGFORMAT.print(sender);
             MultiChat.getCfg().nametagFormat = format;
             Message.CHAT_SETTAG_OK.print(sender, format);
-        }
+        } else return false;
 
         MultiChat.getCfg().save();
         return true;

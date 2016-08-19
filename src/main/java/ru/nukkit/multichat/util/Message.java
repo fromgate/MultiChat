@@ -45,7 +45,7 @@ public enum Message {
     CHAT_HELP("/chat help - show MultiChat help"),
     CHAT_HELP_CURRENT("Current chat format: %1%"),
     CHAT_HELP_NAMETAG_CURRENT("Use nametags: %1% Name tag format: %2%"),
-    CHAT_GROUP_NOTEXIST("Group %1% not found. Custom group format was configured but you must confgiure Multipass group with same id     to take effect", '6');
+    CHAT_GROUP_NOTEXIST("Group %1% not found. Custom group format was configured but you must confgiure Multipass group with same id to take effect", '6');
 
 
     private static boolean debugMode = false;
