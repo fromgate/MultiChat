@@ -5,6 +5,11 @@ This plugin is change chat format according to player's group.
 MultiChat created as companion for permissions plugin Multipass and 
 will not support any other permissions plugin.
 
+##Permissions
+> multichat.config
+
+Allows to use MultiChat's commands
+
 ##Commands
 ###Show help
 > /chat help
