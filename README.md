@@ -94,9 +94,16 @@ group:
   scan-subgroups: true
 # Chat format 
   format:
+# List of groups
+# First - lower prity,  last - higher
+# For example, if player are member of three groups: default, vip and admin
+# Will used format describe in last group in list - admin 
     default: # Group name
       chat: '&5[GUEST]&3%player%&a: 6%message%' # Chat format
     vip: # Group name
-      chat: '&6[VIP]&4%player%&a: %message%' # Chat format
+      chat: '&6[VIP]&e%player%&a: %message%' # Chat format
       name-tag: '&6[VIP] &4%player%' # Name tag format
+    admin: 
+      '&4[ADM]&c%player%e:&a %message'
+      name-tag: '&4[admin] &4%player%' # Name tag format
 ```

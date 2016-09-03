@@ -13,24 +13,23 @@ public class Util {
     }
 
     public static String getCustomFormat(Player player) {
-        ConfigSection section = MultiChat.getCfg().customGroups;
-        String chatFormat = MultiChat.getCfg().chatFormat;
-        for (String key : section.getKeys(false)) {
-            if (!isPlayerInGroup(player, key)) continue;
-            chatFormat = section.getString(key + ".chat", chatFormat);
-        }
-        Message.debugMessage("getCustomFormat(" + player.getName() + "):", chatFormat);
-        return chatFormat;
+        return getCusomParam(player, true);
     }
 
     public static String getCustomNameTag(Player player) {
+        return getCusomParam(player, false);
+    }
+
+    private static String getCusomParam(Player player, boolean getFormat) {
+        String param = getFormat ? ".chat" : ".name-tag";
+        String result = getFormat ? MultiChat.getCfg().chatFormat : MultiChat.getCfg().nametagFormat;
         ConfigSection section = MultiChat.getCfg().customGroups;
-        String nameTag = MultiChat.getCfg().nametagFormat;
         for (String key : section.getKeys(false)) {
-            if (!isPlayerInGroup(player, key)) continue;
-            nameTag = section.getString(key + ".name-tag", nameTag);
+            if (isPlayerInGroup(player, key) && section.exists(key + param)) {
+                result = section.getString(key + param);
+            }
         }
-        return nameTag;
+        return result;
     }
 
     private static boolean isPlayerInGroup(Player player, String group) {
@@ -66,8 +65,9 @@ public class Util {
     }
 
     public static void setNameTag(Player player, String nameTag) {
-        if (nameTag == null || nameTag.isEmpty()) player.setNameTagVisible(false);
-        else {
+        if (nameTag == null || nameTag.isEmpty()) {
+            player.setNameTagVisible(false);
+        } else {
             player.isNameTagVisible();
             player.setDisplayName(TextFormat.colorize(nameTag));
         }

@@ -1,6 +1,6 @@
 name: MultiChat
 main: ru.nukkit.multichat.MultiChat
-version: "1.0.0"
+version: "1.0.1"
 author: fromgate, nukkit.ru
 api: ["1.0.0"]
 description: MultiChat - universal chat formater based on MultiPass plugin
