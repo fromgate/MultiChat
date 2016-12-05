@@ -31,8 +31,11 @@ public class ChatListener implements Listener {
             Util.setNameTag(event.getPlayer(), Util.getNametag(event.getPlayer()));
             Message.debugMessage("setNameTag", Util.getNametag(event.getPlayer()));
         }
-        if (MultiChat.getCfg().displayNameEnable) Util.setDisplayName(event.getPlayer(), Util.getNametag(player));
-        else player.setDisplayName(player.getName());
+        if (MultiChat.getCfg().displayNameEnable) {
+            Util.setDisplayName(event.getPlayer(), Util.getNametag(player));
+        } else {
+            player.setDisplayName(player.getName());
+        }
     }
 
     @EventHandler(priority = EventPriority.NORMAL)
@@ -47,10 +50,12 @@ public class ChatListener implements Listener {
         }
         Message.debugMessage("setNameTag", event.isMassUpdate() ? "all" : event.getUser());
         players.forEach(player -> {
-            if (MultiChat.getCfg().displayNameEnable)
+            if (MultiChat.getCfg().nametagEnabled){
                 Util.setNameTag(player, Util.getNametag(player));
-            if (MultiChat.getCfg().displayNameEnable)
+            }
+            if (MultiChat.getCfg().displayNameEnable){
                 Util.setDisplayName(player, Util.getNametag(player));
+            }
         });
     }
 }
