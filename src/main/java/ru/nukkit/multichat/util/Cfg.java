@@ -27,6 +27,9 @@ public class Cfg extends SimpleConfig {
     @Path("display-name.enable")
     public boolean displayNameEnable = true;
 
+    @Path("display-name.format")
+    public String displayNameFormat = "&a%prefix%&6%player%";
+
     @Path("display-name.strip-colors")
     public boolean isDisplayNameNoColors = false;
 

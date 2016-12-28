@@ -32,6 +32,18 @@ public class Util {
         return result;
     }
 
+    private static String getCustomDisplayName(Player player) {
+        String result = MultiChat.getCfg().displayNameFormat;
+        String param = ".display-name";
+        ConfigSection section = MultiChat.getCfg().customGroups;
+        for (String key : section.getKeys(false)) {
+            if (isPlayerInGroup(player, key) && section.exists(key + param)) {
+                result = section.getString(key + param);
+            }
+        }
+        return result;
+    }
+
     private static boolean isPlayerInGroup(Player player, String group) {
         if (!MultiChat.getCfg().useSubGroup) return Multipass.isInGroup(player, group);
         for (String g : Multipass.getGroups(player))
@@ -69,11 +81,18 @@ public class Util {
             player.setNameTagVisible(false);
         } else {
             player.isNameTagVisible();
-            player.setDisplayName(TextFormat.colorize(nameTag));
+            player.setNameTag(TextFormat.colorize(nameTag));
         }
     }
 
-    public static void setDisplayName(Player player, String nameTag) {
-        player.setDisplayName(MultiChat.getCfg().isDisplayNameNoColors ? TextFormat.clean(nameTag) : nameTag);
+    public static void setDisplayName(Player player, String displayName) {
+        player.setDisplayName(MultiChat.getCfg().isDisplayNameNoColors ? TextFormat.clean(displayName) : displayName);
     }
+
+    public static String getDisplayName(Player player) {
+        return replacePlaceholders(player, getCustomDisplayName(player))
+                .replace("{%0}", player.getName()).replace("{%1}", "");
+    }
+
+
 }

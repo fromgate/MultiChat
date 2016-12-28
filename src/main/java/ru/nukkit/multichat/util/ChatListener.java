@@ -32,7 +32,7 @@ public class ChatListener implements Listener {
             Message.debugMessage("setNameTag", Util.getNametag(event.getPlayer()));
         }
         if (MultiChat.getCfg().displayNameEnable) {
-            Util.setDisplayName(event.getPlayer(), Util.getNametag(player));
+            Util.setDisplayName(event.getPlayer(), Util.getDisplayName (player));
         } else {
             player.setDisplayName(player.getName());
         }

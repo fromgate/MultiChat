@@ -18,6 +18,7 @@ name-tag:
 display-name:
 # Enable display name (shown by TAB-key)
   enable: true
+  format: '&2%prefix%a2%player%&e: %message%'
 # Remove color codes from display name
   strip-colors: false
 
