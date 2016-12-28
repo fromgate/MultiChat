@@ -24,6 +24,9 @@ public class Cfg extends SimpleConfig {
     @Path("name-tag.format")
     public String nametagFormat = "&a%prefix%&6%player%";
 
+    @Path("name-tag.strip-colors")
+    public boolean nametagStripColor = false;
+
     @Path("display-name.enable")
     public boolean displayNameEnable = true;
 

@@ -17,7 +17,8 @@ public class Util {
     }
 
     public static String getCustomNameTag(Player player) {
-        return getCusomParam(player, false);
+        String nameTag = getCusomParam(player, false);
+        return MultiChat.getCfg().nametagStripColor ? TextFormat.clean(nameTag) : nameTag;
     }
 
     private static String getCusomParam(Player player, boolean getFormat) {
@@ -41,7 +42,7 @@ public class Util {
                 result = section.getString(key + param);
             }
         }
-        return result;
+        return MultiChat.getCfg().isDisplayNameNoColors ? TextFormat.clean(result) : result;
     }
 
     private static boolean isPlayerInGroup(Player player, String group) {
